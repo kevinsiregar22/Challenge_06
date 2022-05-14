@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Profile from '../screens/Profile/Profile';
 import Home from '../screens/Home/Home';
@@ -11,7 +11,28 @@ import Octicons from 'react-native-vector-icons/Octicons';
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomTab() {
+export default function BottomTab({navigation}) {
+  // useEffect(() => {
+  //   const unsubscribe = navigation.addListener('tabPress', e => {
+
+  //     // Prevent default behavior
+  //     try {
+  //       await analytics().logEvent('Home', {
+  //         name: 'Home',
+  //       });
+  //     } catch (error) {
+
+  //     }
+  //     e.preventDefault();
+
+  //     alert('Default behavior prevented');
+  //     // Do something manually
+  //     // ...
+  //   });
+
+  //   return unsubscribe;
+  // }, [navigation]);
+
   return (
     <Tab.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
       <Tab.Screen

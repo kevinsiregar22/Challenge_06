@@ -14,12 +14,12 @@ GoogleSignin.configure({
     '434977868258-agqe0f8b0l6e06bk7aaj5jp0dkb232oa.apps.googleusercontent.com',
 });
 
-export default function OauthGoogle() {
+export default function OauthGoogle({navigation}) {
   const _signIn = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      // navigation.navigate('Main');
+      navigation.navigate('Main');
       console.log(userInfo);
     } catch (error) {
       console.log(error);

@@ -1,9 +1,13 @@
-import {View, Text} from 'react-native';
+import {View, Text, StatusBar} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {check, PERMISSIONS, RESULTS, request} from 'react-native-permissions';
 
 import Geolocation from '@react-native-community/geolocation';
-import MapView, {PROVIDER_GOOGLE, Polyline} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE, Polyline, Marker} from 'react-native-maps';
+import {LocationMarker} from '../../components/Maps/LocationMarker';
+import CustomMarker from '../../components/Maps/CostumMaps';
+
+// import analytics from '@react-native-firebase/analytics';
 
 Geolocation.setRNConfiguration({
   enableHighAccuracy: false,
@@ -11,7 +15,7 @@ Geolocation.setRNConfiguration({
   maximumAge: 10000,
 });
 
-export default function Home() {
+export default function Home({navigation}) {
   const [position, setPosition] = useState({});
   const requestPermissions = React.useCallback(async () => {
     const result = await check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
@@ -57,39 +61,32 @@ export default function Home() {
 
   return (
     <View>
-      <Text style={{justifyContent: 'center', textAlign: 'center'}}>Maps</Text>
+      {/* <Text style={{justifyContent: 'center', textAlign: 'center'}}>Maps</Text> */}
       <MapView
-        initialRegion={{
-          latitude: position.lat ? position.lat : 3.595196,
-          longitude: position.long ?? 98.672226,
-          latitudeDelta: 0.0921,
-          longitudeDelta: 0.042,
-        }}
-        style={{width: 400, height: 400}}
         provider={PROVIDER_GOOGLE}
-      />
-      {/* <MapView style={{width: 400, height: 400}}>
-        <Polyline
-          coordinates={[
-            {latitude: 3.595196, longitude: 98.672226},
-            {latitude: 3.595096, longitude: 98.671026},
-            {latitude: 3.594596, longitude: 98.671226},
-            {latitude: 3.594196, longitude: 98.671116},
-            {latitude: 3.593196, longitude: 98.670126},
-            {latitude: 3.595196, longitude: 98.670226},
-          ]}
-          strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
-          strokeColors={[
-            '#7F0000',
-            '#00000000', // no color, creates a "long" gradient between the previous and next coordinate
-            '#B24112',
-            '#E5845C',
-            '#238C23',
-            '#7F0000',
-          ]}
-          strokeWidth={6}
-        />
-      </MapView> */}
+        initialRegion={{
+          latitude: position.latitude ?? 3.587665,
+          longitude: position.longitude ?? 98.67092,
+          latitudeDelta: 0.0322,
+          longitudeDelta: 0.0021,
+        }}
+        style={{
+          width: 400,
+          height: 400,
+        }}>
+        {LocationMarker.map(markers => (
+          <Marker
+            coordinate={{
+              latitude: markers.latitude,
+              longitude: markers.longitude,
+            }}
+            pinColor={markers.markerImage} // any color
+            title={markers.title}
+            description={markers.note}>
+            <CustomMarker item={markers} />
+          </Marker>
+        ))}
+      </MapView>
     </View>
   );
 }
