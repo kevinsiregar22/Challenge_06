@@ -11,14 +11,15 @@ const CustomMarker = ({item}) => {
 
 const styles = StyleSheet.create({
   containerMarker: {
-    height: 30,
-    width: 30,
-    backgroundColor: 'white',
+    // height: 30,
+    // width: 30,
+    backgroundColor: 'red',
     // borderRadius: 30,
   },
   iconMarker: {
     height: 30,
     width: 30,
+    backgroundColor: 'none',
     // borderRadius: 25,
   },
 });

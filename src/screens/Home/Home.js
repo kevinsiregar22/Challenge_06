@@ -3,7 +3,13 @@ import React, {useEffect, useState} from 'react';
 import {check, PERMISSIONS, RESULTS, request} from 'react-native-permissions';
 
 import Geolocation from '@react-native-community/geolocation';
-import MapView, {PROVIDER_GOOGLE, Polyline, Marker} from 'react-native-maps';
+import MapView, {
+  PROVIDER_GOOGLE,
+  Polyline,
+  Marker,
+  Heatmap,
+  Polygon,
+} from 'react-native-maps';
 import {LocationMarker} from '../../components/Maps/LocationMarker';
 import CustomMarker from '../../components/Maps/CostumMarkers';
 
@@ -67,13 +73,14 @@ export default function Home({navigation}) {
         initialRegion={{
           latitude: position.latitude ?? 3.587665,
           longitude: position.longitude ?? 98.67092,
-          latitudeDelta: 0.0322,
-          longitudeDelta: 0.0021,
+          latitudeDelta: 0.0522,
+          longitudeDelta: 0.0121,
         }}
         style={{
           width: 400,
           height: 400,
         }}>
+        <Heatmap points={LocationMarker} />
         {LocationMarker.map(markers => (
           <Marker
             coordinate={{
@@ -85,6 +92,16 @@ export default function Home({navigation}) {
             description={markers.note}>
             <CustomMarker item={markers} />
           </Marker>
+        ))}
+        {LocationMarker.map(Polyline => (
+          <Polygon
+            coordinates={LocationMarker}
+            strokeWidth={5}
+            strokeColor="#379999"
+            // strokeColor={Poly.colorPick}
+            // fillColor={7}
+            // lineCap="round"
+          />
         ))}
       </MapView>
     </View>
