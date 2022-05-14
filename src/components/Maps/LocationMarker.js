@@ -22,7 +22,7 @@ export const LocationMarker = [
     title: 'Medan City Place',
     note: 'nongki',
     markerImage:
-      'https://png.pngtree.com/png-clipart/20211109/ourmid/pngtree-map-red-pointer-icon-location-destination-point-design-3d-png-image_4026952.png',
+      'https://w7.pngwing.com/pngs/363/769/png-transparent-location-icon-landmark-map-location-information.png',
   },
 
   {
@@ -31,7 +31,7 @@ export const LocationMarker = [
     title: 'Medan City Place',
     note: 'nongki',
     markerImage:
-      'https://png.pngtree.com/png-clipart/20211109/ourmid/pngtree-map-red-pointer-icon-location-destination-point-design-3d-png-image_4026952.png',
+      'https://w7.pngwing.com/pngs/363/769/png-transparent-location-icon-landmark-map-location-information.png',
   },
 
   {
@@ -40,6 +40,6 @@ export const LocationMarker = [
     title: 'Medan City Place',
     note: 'nongki',
     markerImage:
-      'https://png.pngtree.com/png-clipart/20211109/ourmid/pngtree-map-red-pointer-icon-location-destination-point-design-3d-png-image_4026952.png',
+      'https://w7.pngwing.com/pngs/363/769/png-transparent-location-icon-landmark-map-location-information.png',
   },
 ];

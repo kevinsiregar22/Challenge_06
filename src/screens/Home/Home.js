@@ -5,7 +5,7 @@ import {check, PERMISSIONS, RESULTS, request} from 'react-native-permissions';
 import Geolocation from '@react-native-community/geolocation';
 import MapView, {PROVIDER_GOOGLE, Polyline, Marker} from 'react-native-maps';
 import {LocationMarker} from '../../components/Maps/LocationMarker';
-import CustomMarker from '../../components/Maps/CostumMaps';
+import CustomMarker from '../../components/Maps/CostumMarkers';
 
 // import analytics from '@react-native-firebase/analytics';
 
